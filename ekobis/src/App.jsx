@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import PrivateRoute from './components/PrivateRoute'; // PrivateRoute import edildi
+import UrunListele from './pages/UrunListele';
+import Price from './pages/Price';
 
 function App() {
   return (
@@ -13,13 +15,29 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/iletisim" element={<Contact />} />
         {/* PrivateRoute ile korunan sayfa */}
         <Route
           path="/urunekle"
           element={
             <PrivateRoute>
               <UrunEkle />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/urunlistele"
+          element={
+            <PrivateRoute>
+              <UrunListele />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/fiyatlar"
+          element={
+            <PrivateRoute>
+              <Price />
             </PrivateRoute>
           }
         />
