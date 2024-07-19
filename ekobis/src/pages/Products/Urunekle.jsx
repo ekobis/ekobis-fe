@@ -60,7 +60,7 @@ export default function UrunEkle() {
   return (
     <div className="h-96 bg-gray-100 rounded-xl flex items-center justify-center">
       {loading && <Loading />}
-      {error && <ErrorModal onClose={() => setError(false)} />}
+      {error && <ErrorModal onClose={() => setError(false)} children="ürün eklerken bir hata meydana geldi" />}
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
         <h2 className="text-2xl font-semibold mb-6" style={{ color: 'rgb(69, 53, 193)' }}>
           Ürün Ekle

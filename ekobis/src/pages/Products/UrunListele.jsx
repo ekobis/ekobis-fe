@@ -33,7 +33,7 @@ export default function UrunListele() {
   }
 
   if (error) {
-    return <ErrorModal onClose={handleClose} />;
+    return <ErrorModal onClose={handleClose} children="ürünler listelenirken bir hata meydana geldi" />;
   }
 
   return (
