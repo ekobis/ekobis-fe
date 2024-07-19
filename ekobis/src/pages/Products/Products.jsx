@@ -4,7 +4,7 @@ export default function Products() {
   return (
     <div className="flex flex-col w-6/12 mx-auto items-center justify-start">
       <h1 className="px-4 py-2 bg-customGreen text-customPurple rounded">ÜRÜNLER</h1>
-      <div className="flex flex-row gap-20 mt-10">
+      <div className="flex flex-row gap-20 mt-10 mb-36">
         <Link to="urunekle" className="px-4 py-2 bg-customGreen text-customPurple rounded">
           ÜRÜN EKLE
         </Link>
