@@ -11,7 +11,7 @@ export default function UrunListele() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/products');
+        const response = await axios.get('http://localhost:8080/product');
         setProducts(response.data);
       } catch (err) {
         setError('Ürünleri yüklerken bir hata oluştu.');

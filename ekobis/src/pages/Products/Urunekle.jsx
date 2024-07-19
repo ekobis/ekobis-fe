@@ -8,7 +8,6 @@ export default function UrunEkle() {
   const [productName, setProductName] = useState('');
   const [purchasePrice, setPurchasePrice] = useState('');
   const [salePrice, setSalePrice] = useState('');
-  const [stockQuantity, setStockQuantity] = useState('');
   const [taxRate, setTaxRate] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState(''); // Kategori state
@@ -24,7 +23,6 @@ export default function UrunEkle() {
       productName,
       purchasePrice,
       salePrice,
-      stockQuantity,
       taxRate,
       description,
       category, // Kategoriyi de ekleyin
@@ -34,9 +32,9 @@ export default function UrunEkle() {
 
     try {
       const response = await axios.post('http://localhost:8080/product', urun);
-      console.log(response.data);
       setLoading(false);
       resetForm();
+      navigate("/urun/urunlistele")
     } catch (error) {
       console.error('Form gönderilirken hata oluştu:', error);
       setLoading(false);
@@ -51,7 +49,6 @@ export default function UrunEkle() {
     setProductName('');
     setPurchasePrice('');
     setSalePrice('');
-    setStockQuantity('');
     setTaxRate('');
     setDescription('');
     setCategory(''); 
@@ -90,14 +87,6 @@ export default function UrunEkle() {
               style={{ borderColor: 'rgb(54, 194, 206)' }}
               value={salePrice}
               onChange={(e) => setSalePrice(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Adet"
-              className="border border-gray-300 p-3 rounded-md"
-              style={{ borderColor: 'rgb(71, 140, 207)' }}
-              value={stockQuantity}
-              onChange={(e) => setStockQuantity(e.target.value)}
             />
             <input
               type="number"
