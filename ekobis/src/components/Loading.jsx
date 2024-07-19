@@ -1,7 +1,6 @@
 // Loading.jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Loading.css'; // CSS dosyasını import edin
 
 const Loading = () => {
   return ReactDOM.createPortal(

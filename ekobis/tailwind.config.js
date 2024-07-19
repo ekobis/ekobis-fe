@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
+      fontWeight: {
+        extralight: 200,
+        medium: 500,
+      },
       animation: {
         rotate360: 'rotate360 1s linear infinite',
       },

@@ -36,7 +36,6 @@ export default function UrunEkle() {
       const response = await axios.post('http://localhost:8080/product', urun);
       console.log(response.data);
       setLoading(false);
-      navigate('/urun/urunlistele');
       resetForm();
     } catch (error) {
       console.error('Form gönderilirken hata oluştu:', error);
@@ -55,7 +54,7 @@ export default function UrunEkle() {
     setStockQuantity('');
     setTaxRate('');
     setDescription('');
-    setCategory(''); // Kategori state'ini de sıfırlayın
+    setCategory(''); 
   };
 
   return (

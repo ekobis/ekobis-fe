@@ -11,7 +11,7 @@ const ErrorModal = ({ onClose }) => {
         </h2>
         <button
           onClick={onClose}
-          className="mt-4 py-2 px-4 rounded bg-red-500 text-white hover:bg-red-700"
+          className="mt-4 py-2 px-4 rounded bg-customPurple text-white hover:bg-customBlue"
         >
           Kapat
         </button>
