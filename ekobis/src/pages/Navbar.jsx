@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      <div className={`flex flex-col h-screen w-12  items-center gap-5 transition-width duration-300 ${expanded ? "bg-customGreen" : "bg-customCyan"} ${expanded ? "w-36" : "w-12"} `}>
+      <div className={`flex flex-col h-screen fixed w-12  items-center gap-5 transition-width duration-300 ${expanded ? "bg-customGreen" : "bg-customCyan"} ${expanded ? "w-36" : "w-12"} `}>
         <div className="mt-5 w-full h-auto">
           <img
             src={ekobisLogo}
