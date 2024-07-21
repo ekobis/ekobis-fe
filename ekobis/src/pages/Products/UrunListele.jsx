@@ -51,7 +51,7 @@ export default function UrunListele() {
   }
 
   return (
-    <div className="w-11/12 md:w-3/4 lg:w-1/2 mx-auto bg-gray-50 mt-10 p-4 rounded-lg shadow-md">
+    <div className="w-11/12 md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-r from-customPurple via-customGreen to-customCyan mt-10 p-4 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4 text-customPurple">
         Ürün Listele
       </h1>

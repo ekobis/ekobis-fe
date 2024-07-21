@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 export default function Home() {
   return (
     <>
-      <div className="container mx-auto mt-10 p-6">
+      <div className="container mx-auto mt-10 p-6 ">
         {/* Hero Section */}
         <section id="home" className="bg-white p-10 rounded-lg shadow-lg mb-10">
           <h2 className="text-4xl font-bold text-customBlue mb-4">

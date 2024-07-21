@@ -30,5 +30,10 @@ export default {
       },
     },
   },
+  variants: {
+    extend: {
+      backgroundImage: ['hover', 'focus'],
+    },
+  },
   plugins: [],
 }
