@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <div className={`container mx-auto mt-10 p-6 `}>
+      <div className={`container mx-auto mt-10 p-6  `}>
         {/* Hero Section */}
         <section id="home" className={`p-10 rounded-lg ${shadow} mb-10`}>
           <h2 className="text-4xl font-bold mb-4">
@@ -16,7 +16,7 @@ export default function Home() {
           <p className="text-lg mb-4">
             Ekobis, ön muhasebe sorunlarına çözüm odaklı, açık kaynak kodlu ve kar amacı gütmeyen bir gönüllülük projesidir.
           </p>
-          <a href="#features" className={`inline-block py-2 px-4 rounded-full ${shadow} hover:bg-customCyan transition`}>
+          <a href="#features" className={`inline-block py-2 px-4 text-customCyan rounded-full ${shadow} hover:bg-indigo-900 transition`}>
             Daha Fazla Bilgi
           </a>
         </section>
