@@ -27,6 +27,12 @@ export default {
         customCyan: 'rgb(54, 194, 206)',
         customBlue: 'rgb(71, 140, 207)',
         customPurple: 'rgb(69, 53, 193)',
+        nightBorder: '#444',
+        dayBorder: '#ddd',
+      },
+      boxShadow: {
+        nightShadow: '0 4px 6px rgba(35, 130, 221, 0.66)',
+        dayShadow: '0 4px 6px rgba(7, 170, 241, 0.66)',
       },
     },
   },
