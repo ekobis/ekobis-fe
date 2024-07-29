@@ -9,8 +9,6 @@ import { useThemeClasses } from "./components/context/CustomTheme";
 export default function App() {
   const { background, text, border, shadow } = useThemeClasses();
 
-  // Define dynamic class based on theme
-
 
   return (
     <div className={`flex flex-row ${background} ${text} ${border} ${shadow}`}>

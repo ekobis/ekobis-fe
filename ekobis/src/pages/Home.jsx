@@ -1,13 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Footer from '../components/Footer';
-import { useThemeClasses } from "../components/context/CustomTheme.jsx"
+import { useThemeClasses } from "../components/context/CustomTheme.jsx";
+import { Link } from 'react-router-dom';
+import ekobisUser from "../../public/ekobisUser.jpg";
 
 export default function Home() {
   const { background, text, border, shadow } = useThemeClasses();
 
   return (
     <>
-      <div className={`container mx-auto mt-10 p-6  `}>
+      {/* Navbar */}
+      <nav className={`bg-customBlue p-4 ${shadow} flex justify-between items-center ml-16`}>
+        <div className="text-2xl font-bold text-white">
+          Ekobis
+        </div>
+        <div className="flex items-center">
+          <span className="mr-4 text-white">Merhaba Ekobis User</span>
+          <Link to="/profile">
+            <img
+              src={ekobisUser}
+              alt="Kullanıcı Profili"
+              className="w-12 h-12 rounded-full border border-white hover:border-customPurple shadow-lg shadow-black"
+            />
+          </Link>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className={`container mx-auto mt-10`}>
         {/* Hero Section */}
         <section id="home" className={`p-10 rounded-lg ${shadow} mb-10`}>
           <h2 className="text-4xl font-bold mb-4">
@@ -26,15 +46,15 @@ export default function Home() {
           <h2 className={`text-3xl font-bold mb-4 ${text}`}>Özellikler</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className={`p-6 rounded-lg ${shadow}`}>
-              <h3 className="text-2xl font-bold mb-2 ${text}">Kolay Kullanım</h3>
+              <h3 className={`text-2xl font-bold mb-2 ${text}`}>Kolay Kullanım</h3>
               <p>Kullanıcı dostu arayüzümüz ile tüm muhasebe işlemlerinizi kolayca gerçekleştirin.</p>
             </div>
             <div className={`p-6 rounded-lg ${shadow}`}>
-              <h3 className="text-2xl font-bold mb-2 ${text}">Raporlama</h3>
+              <h3 className={`text-2xl font-bold mb-2 ${text}`}>Raporlama</h3>
               <p>Gelişmiş raporlama özellikleri ile işinizin her anını takip edin.</p>
             </div>
             <div className={`p-6 rounded-lg ${shadow}`}>
-              <h3 className="text-2xl font-bold mb-2 ${text}">Entegrasyon</h3>
+              <h3 className={`text-2xl font-bold mb-2 ${text}`}>Entegrasyon</h3>
               <p>Diğer iş uygulamaları ile kolayca entegre olun.</p>
             </div>
           </div>

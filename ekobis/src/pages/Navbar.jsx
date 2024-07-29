@@ -1,172 +1,324 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import ekobisLogo from "../../public/ekobisnewLogo.png";
 import { NavLink } from "react-router-dom";
-import themeContext from "../components/context/ThemeContext"
-
-// customGreen: 'rgb(119, 228, 200)',
-// customCyan: 'rgb(54, 194, 206)',
-// customBlue: 'rgb(71, 140, 207)',
-// customPurple: 'rgb(69, 53, 193)',
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
-  const { theme, toggleTheme } = useContext(themeContext)
+  const [clientDropdownOpen, setClientDropdownOpen] = useState(false);
+  const [productDropdownOpen, setProductDropdownOpen] = useState(false);
+  const [tableDropdownOpen, setTableDropdownOpen] = useState(false);
+  const [formDropdownOpen, setFormDropdownOpen] = useState(false);
 
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
+  const handleMouseOver = () => {
+    setExpanded(true);
+  };
+
+  const handleMouseOut = () => {
+    setExpanded(false);
+  };
+
+  const toggleClientDropdown = () => {
+    setClientDropdownOpen(!clientDropdownOpen);
+  };
+
+  const toggleProductDropdown = () => {
+    setProductDropdownOpen(!productDropdownOpen);
+  };
+
+  const toggleFormDropdown = () => {
+    setFormDropdownOpen(!formDropdownOpen);
+  };
+
+  const toggleTableDropdown = () => {
+    setTableDropdownOpen(!tableDropdownOpen);
   };
 
   return (
-    <div className="relative">
-      <div className={`flex flex-col h-screen fixed w-12  items-center gap-5 transition-width duration-300 ${expanded ? "bg-customGreen" : "bg-customCyan"} ${expanded ? "w-36" : "w-12"} `}>
-        <div className="mt-5 w-full h-auto">
-          <img
-            src={ekobisLogo}
-            alt="logo"
-            className="transition-transform duration-300 hover:scale-125"
-          />
-        </div> {/* Navbar logo */}
-
-        {/* Theme Icons start with day icon*/}
-
-        {theme === "day" ? <button onClick={toggleTheme}>
-        <div className="relative flex flex-col items-center group mt-10 transition-transform duration-100 shadow rounded-full border border-customBlue shadow-black hover:bg-customBlue hover:scale-150">
-
-       
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-customPurple">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-        </svg>
-        <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple text-customGreen text-xs rounded transition-opacity duration-100 border border-customBlue shadow-black`}>
-        DayMode
+    <div className="relative h-screen">
+      <div
+        className={`flex flex-col fixed h-screen items-center gap-2 transition-all duration-300 ${
+          expanded ? "bg-customGreen w-56" : "bg-customCyan w-16"
+        }`}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        <div className="mt-3 h-auto w-full flex justify-center">
+          <img src={ekobisLogo} alt="logo" className="w-10 h-10 max-w-none" />
         </div>
-        </div>
-        </button> 
-        
-        :  
-        <button onClick={toggleTheme}>
-          <div className="relative flex flex-col items-center group mt-10 transition-transform duration-100 shadow rounded-full border border-customBlue shadow-black hover:bg-customBlue hover:scale-150">
 
-         
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-customPurple">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-        </svg>
-        <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple text-customGreen text-xs rounded transition-opacity duration-100 border border-customBlue shadow-black`}>
-        DarkMode
-        </div>
-        </div>
-        </button>
-        }
-
-        {/* theme Icons ends with night icon */}
-
-        <button onClick={toggleExpanded}>
-          <div className="relative flex flex-col items-center group p-1 transition-transform duration-100 shadow rounded-full border border-customBlue shadow-black hover:bg-customBlue hover:scale-150">
-            {expanded ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-customPurple">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            ) : (
+        <div
+          className={`flex flex-col mt-5 transition-all duration-300 ${
+            expanded ? "w-56" : "w-16"
+          }`}
+        >
+          <div className="flex items-center justify-center p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300">
+            <NavLink
+              to="/"
+              className="flex items-center justify-center p-2 rounded-full shadow-md bg-customBlue transition-all border border-customPurple hover:bg-indigo-800 duration-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-customPurple"
+                className="w-6 h-6 text-indigo-100"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z"
+                  d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
                 />
               </svg>
-            )} {/* Collapse Icon */}
-            <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple text-customGreen text-xs rounded p-1 transition-opacity duration-100 border border-customBlue shadow-black`}>
-              Expand
-            </div>
+              {expanded && (
+                <span className="text-indigo-100 transition-opacity duration-300">
+                  Home
+                </span>
+              )}
+            </NavLink>
           </div>
-        </button>
 
-        <NavLink
-         to="/"
-         className={({ isActive, isPending }) =>
-           isPending ? "pending" : isActive ? "active" : ""
-         }>
-          <div className={`relative flex flex-col items-center group p-1 transition-transform duration-100 shadow rounded-full border border-customBlue shadow-black hover:bg-customBlue ${expanded ? "" : " hover:scale-150"}`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-customPurple"
+          {/* Client Dropdown */}
+          <div className="flex flex-col w-full">
+            <button
+              onClick={toggleClientDropdown}
+              className="flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg> {/* Home Icon */}
-            <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple text-customGreen text-xs rounded p-1 transition-opacity duration-100`}>
-              Home
-            </div>
+              <div className="flex items-center border border-customPurple hover:bg-indigo-800 rounded-full p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 text-indigo-100"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
+                  />
+                </svg>
+                {expanded && (
+                  <span className="ml-2 text-indigo-100 transition-opacity duration-300">
+                    Clients
+                  </span>
+                )}
+              </div>
+              {expanded && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={`w-5 h-5 transition-transform text-indigo-100 ${
+                    clientDropdownOpen ? "transform rotate-180" : ""
+                  }`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              )}
+            </button>
+            {clientDropdownOpen && expanded && (
+              <div className="flex flex-col items-start p-2 pl-4 space-y-2 bg-customBlue">
+                <NavLink
+                  to="/clients/list"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Clients Listele
+                </NavLink>
+                <NavLink
+                  to="/clients/add"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Client Ekle
+                </NavLink>
+              </div>
+            )}
           </div>
-          {expanded && <div className="text-customPurple text-xs mt-1">Ana Sayfa</div>}
-        </NavLink>
 
-        <NavLink
-        to="/musteri"
-        className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""
-        }>
-          <div className={`relative flex flex-col items-center group p-1 transition-transform duration-100 shadow rounded-full hover:bg-customBlue ${expanded ? "" : " hover:scale-150"} border border-customBlue shadow-black`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-customPurple"
+          {/* Product Dropdown */}
+          <div className="flex flex-col w-full">
+            <button
+              onClick={toggleProductDropdown}
+              className="flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
-              />
-            </svg> {/* Client list Icon */}
-            <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple  text-customGreen text-xs rounded p-1 transition-opacity duration-100`}>
-              Clients
-            </div>
+              <div className="flex items-center border border-customPurple hover:bg-indigo-800 rounded-full p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 text-indigo-100"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+                {expanded && (
+                  <span className="ml-2 text-indigo-100 transition-opacity duration-300">
+                    Products
+                  </span>
+                )}
+              </div>
+              {expanded && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={`w-5 h-5 transition-transform text-indigo-100 ${
+                    productDropdownOpen ? "transform rotate-180" : ""
+                  }`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              )}
+            </button>
+            {productDropdownOpen && expanded && (
+              <div className="flex flex-col items-start p-2 pl-4 space-y-2 bg-customBlue">
+                <NavLink
+                  to="urunlistele"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Ürün Listele
+                </NavLink>
+                <NavLink
+                  to="urunekle"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Ürün Ekle
+                </NavLink>
+              </div>
+            )}
           </div>
-          {expanded && <div className="text-customPurple text-xs mt-3">Müşteri Yönetimi</div>}
-        </NavLink>
 
-        <NavLink
-        to="/urun"
-        className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""
-        }>
-          <div className={`relative flex flex-col items-center group p-1 transition-transform duration-100 shadow rounded-full hover:bg-customBlue ${expanded ? "" : " hover:scale-150"} border border-customBlue shadow-black`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-customPurple"
+          {/* Forms Dropdown */}
+          <div className="flex flex-col w-full">
+            <button
+              onClick={toggleFormDropdown}
+              className="flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-              />
-            </svg> {/* Product list Icon */}
-            <div className={`absolute left-8 top-0 opacity-0 ${!expanded ? "group-hover:visible" : "invisible"} group-hover:opacity-100 bg-customPurple text-customGreen text-xs rounded p-1 transition-opacity duration-100 `}>
-              Products
-            </div>
+              <div className="flex items-center border border-customPurple hover:bg-indigo-800 rounded-full p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              strokeWidth={1.5} 
+              stroke="currentColor" 
+              className="w-6 h-6 text-indigo-100">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+              </svg>
+
+                {expanded && (
+                  <span className="ml-2 text-indigo-100 transition-opacity duration-300">
+                    Forms
+                  </span>
+                )}
+              </div>
+              {expanded && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={`w-5 h-5 transition-transform text-indigo-100 ${
+                    formDropdownOpen ? "transform rotate-180" : ""
+                  }`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              )}
+            </button>
+            {formDropdownOpen && expanded && (
+              <div className="flex flex-col items-start p-2 pl-4 space-y-2 bg-customBlue">
+                <NavLink
+                  to="/formlar/form1"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Form 1
+                </NavLink>
+                <NavLink
+                  to="/formlar/form2"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Form 2
+                </NavLink>
+              </div>
+            )}
           </div>
-          {expanded && <div className="text-customPurple text-xs mt-1">Ürün Yönetimi</div>}
-        </NavLink>
+
+          {/* Tables Dropdown */}
+          <div className="flex flex-col w-full">
+            <button
+              onClick={toggleTableDropdown}
+              className="flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+            >
+              <div className="flex items-center border border-customPurple hover:bg-indigo-800 rounded-full p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-indigo-100">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
+              </svg>
+
+                {expanded && (
+                  <span className="ml-2 text-indigo-100 transition-opacity duration-300">
+                    Tables
+                  </span>
+                )}
+              </div>
+              {expanded && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={`w-5 h-5 transition-transform text-indigo-100 ${
+                    tableDropdownOpen ? "transform rotate-180" : ""
+                  }`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              )}
+            </button>
+            {tableDropdownOpen && expanded && (
+              <div className="flex flex-col items-start p-2 pl-4 space-y-2 bg-customBlue">
+                <NavLink
+                  to="/tables/table1"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Table 1
+                </NavLink>
+                <NavLink
+                  to="/tables/table2"
+                  className="text-indigo-100 w-full flex items-center justify-between p-2 border border-customPurple shadow-md bg-customBlue hover:bg-customCyan transition-all duration-300"
+                >
+                  Table 2
+                </NavLink>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
